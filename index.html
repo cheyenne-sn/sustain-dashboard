@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustain Webinar Programme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-blue:#042D49; --turquoise:#26D9D8; --lilac:#C7B5F0;
+  --dawn-blue:#6B91CB; --white:#FFFFFF; --cream:#FAF7F2;
+  --off-white:#F8F8F6; --light-grey:#F2F2F2; --dark-grey:#41616D;
+  --fg2:#41616D; --fg3:#6F8A93; --mint:#E6FBFA; --peach:#FCEAE6;
+  --lavender:#EFEAFB; --border:#E3E3E0;
+  --success:#3FA67A; --warning:#E8A14B; --danger:#D9534F;
+  --shadow1:0 1px 2px rgba(4,45,73,0.06),0 1px 1px rgba(4,45,73,0.04);
+  --font-display:'Manrope',system-ui,sans-serif;
+  --font-body:'Lato',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-font-smoothing:antialiased;}
+body{margin:0;font-family:var(--font-body);font-size:15px;font-weight:300;line-height:1.6;color:var(--deep-blue);background:var(--white);}
+h1,h2,h3,h4{font-family:var(--font-display);margin:0 0 12px;letter-spacing:-0.01em;}
+h1{font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;}
+h2{font-size:clamp(20px,2.6vw,30px);font-weight:600;line-height:1.2;}
+h3{font-size:18px;font-weight:600;}h4{font-size:15px;font-weight:600;}
+p{margin:0 0 12px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+.sec{padding:clamp(36px,6vw,72px) 0;}
+.sec--blue{background:var(--deep-blue);color:var(--white);}
+.sec--blue h1,.sec--blue h2,.sec--blue h3{color:var(--white);}
+.sec--cream{background:var(--cream);}
+.sec--grey{background:var(--off-white);}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--turquoise);margin:0 0 10px;}
+.eyebrow--dark{color:var(--fg3);}
+.lead{font-size:17px;font-weight:500;line-height:1.5;max-width:600px;}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;}
+@media(max-width:680px){.stat-row{grid-template-columns:repeat(2,1fr);}}
+.stat{border-radius:14px;padding:20px;background:var(--mint);}
+.stat--peach{background:var(--peach);}.stat--lav{background:var(--lavender);}.stat--cream{background:var(--cream);}
+.stat__n{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--deep-blue);line-height:1;margin-bottom:4px;}
+.stat__l{font-size:12px;color:var(--dark-grey);font-weight:500;}
+.flag{display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;}
+.flag--g{background:#E6F5EE;color:var(--success);}
+.flag--w{background:#FDF3E6;color:var(--warning);}
+.flag--d{background:var(--lavender);color:#6B47B8;}
+.callout{border-left:4px solid var(--turquoise);background:var(--cream);border-radius:0 12px 12px 0;padding:16px 20px;margin:20px 0;font-size:14px;}
+.callout--warn{border-color:var(--warning);background:#FDF3E6;}
+.callout p:last-child{margin:0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:680px){.two-col{grid-template-columns:1fr;}}
+.card{background:var(--white);border-radius:16px;padding:22px;box-shadow:var(--shadow1);border:1px solid var(--border);}
+.card--tl{border-top:3px solid var(--turquoise);}
+.card--g{border-top:3px solid var(--success);}
+.card--w{border-top:3px solid var(--warning);}
+.card p{font-size:13px;color:var(--fg2);max-width:100%;margin:8px 0 0;}
+.disc-list{display:flex;flex-direction:column;gap:12px;margin-top:16px;}
+.disc-item{display:flex;gap:12px;align-items:flex-start;padding:16px 20px;background:var(--white);border-radius:14px;box-shadow:var(--shadow1);border:1px solid var(--border);}
+.disc-num{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--turquoise);flex-shrink:0;line-height:1;padding-top:2px;}
+.disc-item h4{margin:0 0 4px;}.disc-item p{font-size:13px;color:var(--fg2);max-width:100%;margin:0;}
+.bar-group{margin-bottom:14px;}
+.bar-label{font-size:12px;color:var(--fg2);margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;}
+.bar-track{height:10px;background:var(--light-grey);border-radius:5px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:5px;}
+.bar-before{background:var(--dawn-blue);opacity:0.5;}
+.bar-after{background:var(--turquoise);}
+.delta{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;}
+.delta--up{background:#E6F5EE;color:var(--success);}
+.delta--flat{background:var(--light-grey);color:var(--fg3);}
+.delta--down{background:#FCEAEA;color:var(--danger);}
+.reg-bar-wrap{display:flex;align-items:flex-end;gap:8px;height:150px;margin-bottom:8px;}
+.reg-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:0;height:100%;justify-content:flex-end;}
+.reg-bar{width:100%;min-height:4px;}
+.reg-bar--reg{background:var(--deep-blue);}
+.reg-bar--att{background:var(--turquoise);}
+.reg-labels{display:flex;gap:8px;}
+.reg-label{flex:1;text-align:center;font-size:10px;color:var(--fg3);line-height:1.3;}
+.reg-legend{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;}
+.reg-legend span{font-size:12px;color:var(--fg2);display:flex;align-items:center;gap:6px;}
+.reg-legend span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:3px;}
+.reg-legend .l-reg::before{background:var(--deep-blue);}
+.reg-legend .l-att::before{background:var(--turquoise);}
+.meta{background:var(--deep-blue);padding:10px 0;}
+.meta .wrap{display:flex;justify-content:space-between;align-items:center;}
+.meta span{font-size:11px;color:rgba(255,255,255,0.5);}
+.meta strong{color:var(--turquoise);}
+</style>
+</head>
+<body>
+
+<div class="meta">
+  <div class="wrap">
+    <span>Sustain webinar programme</span>
+    <span>Updated <strong>Tue Jul 14 2026 15:40:12 GMT+0100 (British Summer Time)</strong> · Internal only</span>
+  </div>
+</div>
+
+<section class="sec sec--blue">
+  <div class="wrap">
+    <p class="eyebrow">Cross-functional update · 11 sessions in</p>
+    <h1>Sustain webinar programme</h1>
+    <p class="lead" style="color:rgba(255,255,255,0.8);margin-top:12px;">11 sessions delivered. 1,690+ unique members reached.</p>
+    <div class="callout" style="background:rgba(38,217,216,0.08);border-color:var(--turquoise);margin-top:24px;">
+      <p style="color:rgba(255,255,255,0.85);margin:0;font-size:13px;"><strong style="color:var(--turquoise);">Data caveat:</strong> Many session cohorts haven't yet reached their end date. Completion data is directional, not conclusive — we're checking whether trends are pointing the right way.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--dark">Reach</p>
+    <h2>Numbers at a glance</h2>
+    <div class="stat-row">
+      <div class="stat"><div class="stat__n">3,445</div><div class="stat__l">Total registrations</div></div>
+      <div class="stat stat--peach"><div class="stat__n">1,690</div><div class="stat__l">Unique registrants</div></div>
+      <div class="stat stat--lav"><div class="stat__n">958</div><div class="stat__l">Live attendances</div></div>
+      <div class="stat stat--cream"><div class="stat__n">~28%</div><div class="stat__l">Showed up live</div></div>
+    </div>
+    <p style="font-size:13px;color:var(--fg3);margin-top:14px;">65% of registrants watched the recordings.</p>
+    <div style="margin-top:28px;">
+      <h3 style="font-size:15px;margin-bottom:4px;">Registration per session</h3>
+      <p style="font-size:13px;color:var(--fg2);margin-bottom:16px;">June dropped off sharply after the first two sessions. July's numbers show a strong recovery — individual invites now go out one week before each session rather than at the start of the month.</p>
+      <div class="reg-bar-wrap">
+        
+        <div class="reg-bar-col" style="">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">595<br><span style="color:var(--turquoise);">202</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 202/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 393/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">524<br><span style="color:var(--turquoise);">161</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 161/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 363/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">185<br><span style="color:var(--turquoise);">57</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 57/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 128/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">197<br><span style="color:var(--turquoise);">67</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 67/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 130/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">120<br><span style="color:var(--turquoise);">28</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 28/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 92/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">202<br><span style="color:var(--turquoise);">58</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 58/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 144/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">164<br><span style="color:var(--turquoise);">32</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 32/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 132/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">141<br><span style="color:var(--turquoise);">30</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 30/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 111/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="outline:2px solid var(--turquoise);border-radius:4px;">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">441<br><span style="color:var(--turquoise);">112</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 112/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 329/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="outline:2px solid var(--turquoise);border-radius:4px;">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">321<br><span style="color:var(--turquoise);">76</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 76/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 245/595)"></div>
+        </div>
+
+        <div class="reg-bar-col" style="outline:2px solid var(--turquoise);border-radius:4px;">
+          <div style="font-size:9px;color:var(--fg3);text-align:center;line-height:1.2;margin-bottom:2px;">555<br><span style="color:var(--turquoise);">135</span></div>
+          <div class="reg-bar reg-bar--att" style="height:calc(110px * 135/595)"></div>
+          <div class="reg-bar reg-bar--reg" style="height:calc(110px * 420/595)"></div>
+        </div>
+      </div>
+      <div class="reg-labels">
+        <div class="reg-label" style="">26 May<br>Snack</div>
+<div class="reg-label" style="">28 May<br>Exercise</div>
+<div class="reg-label" style="">2 Jun<br>Plateau</div>
+<div class="reg-label" style="">4 Jun<br>Prevent</div>
+<div class="reg-label" style="">9 Jun<br>Stress</div>
+<div class="reg-label" style="">11 Jun<br>Sleep</div>
+<div class="reg-label" style="">16 Jun<br>Motivation</div>
+<div class="reg-label" style="">18 Jun<br>Mindset</div>
+<div class="reg-label" style="color:var(--turquoise);font-weight:600;">7 Jul<br>Prevent ✦</div>
+<div class="reg-label" style="color:var(--turquoise);font-weight:600;">9 Jul<br>Stress ✦</div>
+<div class="reg-label" style="color:var(--turquoise);font-weight:600;">14 Jul<br>Sleep ✦</div>
+      </div>
+      <div class="reg-legend">
+        <span class="l-reg">Registered (didn't attend live)</span>
+        <span class="l-att">Attended live</span>
+        <span style="color:var(--turquoise);font-weight:600;">✦ 1-week invite timing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--cream">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--dark">App engagement · sessions 5, 6 &amp; 7</p>
+    <h2>Are members using the app more after attending?</h2>
+    <p style="max-width:600px;">We compared home screen views (HSV) in the 10 days before vs after each member's webinar. We split members by how active they were in the app before attending.</p>
+    <div style="background:var(--white);border-radius:16px;padding:24px;box-shadow:var(--shadow1);border:1px solid var(--border);margin-top:24px;">
+      <h3 style="font-size:15px;margin-bottom:4px;">App activity before vs after — by prior engagement</h3>
+      <p style="font-size:13px;color:var(--fg2);margin-bottom:20px;">Disengaged = 0–5 HSV in the 10 days before · Active = 6–20 · Highly active = 21+</p>
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:12px;">Attended live &nbsp;<span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">— 28% were disengaged beforehand</span></p>
+      <div class="bar-group">
+        <div class="bar-label"><span>Disengaged &nbsp;<span style="color:var(--fg3);font-size:11px;">n=83 · 28% of live attenders</span></span><strong><span class="delta delta--up">+4.9</span></strong></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">Before: 2.6</div><div class="bar-track"><div class="bar-fill bar-before" style="width:6%"></div></div></div>
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">After: 7.5</div><div class="bar-track"><div class="bar-fill bar-after" style="width:17%"></div></div></div>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label"><span>Active &nbsp;<span style="color:var(--fg3);font-size:11px;">n=112 · 38%</span></span><strong><span class="delta delta--up">+2.5</span></strong></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">Before: 12.2</div><div class="bar-track"><div class="bar-fill bar-before" style="width:28%"></div></div></div>
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">After: 14.7</div><div class="bar-track"><div class="bar-fill bar-after" style="width:34%"></div></div></div>
+        </div>
+      </div>
+      <div class="bar-group" style="margin-bottom:20px;">
+        <div class="bar-label"><span>Highly active &nbsp;<span style="color:var(--fg3);font-size:11px;">n=101 · 34%</span></span><strong><span class="delta delta--down">-8.8</span></strong></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">Before: 47.0</div><div class="bar-track"><div class="bar-fill bar-before" style="width:100%"></div></div></div>
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">After: 38.2</div><div class="bar-track"><div class="bar-fill bar-after" style="width:81%"></div></div></div>
+        </div>
+      </div>
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:12px;border-top:1px solid var(--border);padding-top:16px;">Watched recording only &nbsp;<span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">— 34% were disengaged beforehand</span></p>
+      <div class="bar-group">
+        <div class="bar-label"><span>Disengaged &nbsp;<span style="color:var(--fg3);font-size:11px;">n=155 · 34% of recording watchers</span></span><strong><span class="delta delta--up">+3.1</span></strong></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">Before: 1.9</div><div class="bar-track"><div class="bar-fill bar-before" style="width:4%"></div></div></div>
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">After: 5.0</div><div class="bar-track"><div class="bar-fill bar-after" style="width:12%"></div></div></div>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label"><span>Active &nbsp;<span style="color:var(--fg3);font-size:11px;">n=173 · 38%</span></span><strong><span class="delta delta--flat">+0.1</span></strong></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">Before: 11.9</div><div class="bar-track"><div class="bar-fill bar-before" style="width:28%"></div></div></div>
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">After: 12.0</div><div class="bar-track"><div class="bar-fill bar-after" style="width:28%"></div></div></div>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label"><span>Highly active &nbsp;<span style="color:var(--fg3);font-size:11px;">n=133 · 29%</span></span><strong><span class="delta delta--down">-8.6</span></strong></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">Before: 43.4</div><div class="bar-track"><div class="bar-fill bar-before" style="width:92%"></div></div></div>
+          <div><div style="font-size:11px;color:var(--fg3);margin-bottom:3px;">After: 34.8</div><div class="bar-track"><div class="bar-fill bar-after" style="width:74%"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:16px;">
+      <div class="card card--g">
+        <span class="flag flag--g">Positive</span>
+        <h4 style="margin:10px 0 4px;">Disengaged members are responding the most</h4>
+        <p>About a third of attenders were disengaged beforehand. That group nearly tripled their app activity after attending live (+4.9). The programme is reaching and moving the people it's designed for.</p>
+      </div>
+      <div class="card card--w">
+        <span class="flag flag--w">Watch</span>
+        <h4 style="margin:10px 0 4px;">Highly active members dip after attending — that's expected</h4>
+        <p>The drop for highly active members (-8.8 live, -8.6 recording) is most likely a return to their normal level after a peak period, not a negative effect of the webinar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--dark">Member feedback · 128 responses</p>
+    <h2>What members told us</h2>
+    <div class="two-col" style="margin-top:20px;">
+      <div class="card card--tl">
+        <span class="flag flag--g">Quality</span>
+        <h4 style="margin:10px 0 4px;">Content is landing well</h4>
+        <p>89% of live attendees rated 4 or 5 stars.</p>
+        <div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap;">
+          <div style="text-align:center;"><div style="font-size:26px;font-weight:700;color:var(--deep-blue);">26×</div><div style="font-size:11px;color:var(--fg3);">5 stars</div></div>
+          <div style="text-align:center;"><div style="font-size:26px;font-weight:700;color:var(--deep-blue);">22×</div><div style="font-size:11px;color:var(--fg3);">4 stars</div></div>
+          <div style="text-align:center;"><div style="font-size:26px;font-weight:700;color:var(--warning);">4×</div><div style="font-size:11px;color:var(--fg3);">3 stars</div></div>
+        </div>
+      </div>
+      <div class="card card--w">
+        <span class="flag flag--w">Barrier</span>
+        <h4 style="margin:10px 0 4px;">Time is the main reason people don't attend live</h4>
+        <p>21 people said the time didn't suit. Early evening is the preferred slot by a clear margin — and weekend requests are growing.</p>
+        <div style="margin-top:12px;font-size:12px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><div style="height:8px;background:var(--deep-blue);border-radius:4px;width:70%;"></div><span style="white-space:nowrap;color:var(--fg2);">Early evening <strong>42</strong></span></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><div style="height:8px;background:var(--dawn-blue);border-radius:4px;opacity:0.7;width:calc(70% * 26/42);"></div><span style="white-space:nowrap;color:var(--fg2);">Afternoon <strong>26</strong></span></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><div style="height:8px;background:var(--dawn-blue);border-radius:4px;opacity:0.5;width:calc(70% * 19/42);"></div><span style="white-space:nowrap;color:var(--fg2);">Morning <strong>19</strong></span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><div style="height:8px;background:var(--dawn-blue);border-radius:4px;opacity:0.3;width:calc(70% * 14/42);"></div><span style="white-space:nowrap;color:var(--fg2);">Lunchtime <strong>14</strong></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:16px;">
+      <p><strong>32 members meant to watch the recording but didn't</strong> — a reminder sent when the recording goes live would likely recover a portion of these.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--grey">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--dark">For discussion</p>
+    <h2>Questions for the team</h2>
+    <div class="disc-list">
+      <div class="disc-item">
+        <div class="disc-num">1</div>
+        <div>
+          <h4>Time is the main barrier — but HC availability makes evenings difficult. Does reducing cadence give us more flexibility?</h4>
+          <p>We've historically run webinars in the evenings but it's hard to get health coach cover consistently. If we move from twice a week to once a week (or once a fortnight), does that free up the ability to lock in a reliable early evening slot? And would fewer, better-attended sessions be more effective than the current volume?</p>
+        </div>
+      </div>
+      <div class="disc-item">
+        <div class="disc-num">2</div>
+        <div>
+          <h4>The HC rota is changing to include Saturday SWMS cover — could we use this to host a weekend session?</h4>
+          <p>A Saturday slot would serve members who genuinely can't attend on weekdays. If the cover is already being rostered, the additional lift to trial a webinar on that slot may be relatively low. Worth scoping.</p>
+        </div>
+      </div>
+      <div class="disc-item">
+        <div class="disc-num">3</div>
+        <div>
+          <h4>Registration timing change — early signs are positive</h4>
+          <p>Individual invites now go out one week before each session. Jul 7 Prevent Diabetes: 197 → 441 registrations. Jul 9 Stress: 120 → 321. Jul 14 Sleep: 555 registrations — the highest since launch. Three sessions in a row trending up.</p>
+        </div>
+      </div>
+      <div class="disc-item">
+        <div class="disc-num">4</div>
+        <div>
+          <h4>Are we reaching the members who most need re-engaging?</h4>
+          <p>Around 28–34% of people engaging with the webinars were disengaged beforehand, and they're showing the strongest response. The next step is to join the attendee data to disengagement flags in Snowflake to confirm how much of our reach is going to the formally identified disengaged cohort.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="meta" style="padding:14px 0;">
+  <div class="wrap">
+    <span>Second Nature · NHS NDPP Sustain · Tue Jul 14 2026 15:40:12 GMT+0100 (British Summer Time)</span>
+    <span>Internal · not for distribution</span>
+  </div>
+</div>
+
+</body>
+</html>
